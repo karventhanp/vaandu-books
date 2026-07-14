@@ -1,6 +1,6 @@
-import Link from "next/link";
+import HomeCarousel from "@/components/HomeCarousel";
+import Image from "next/image";
 
-// Temporary sample catalog data for development preview
 const SAMPLE_BOOKS = [
   {
     id: "1",
@@ -34,75 +34,31 @@ const SAMPLE_BOOKS = [
 
 export default function HomePage() {
   return (
-    <div className="pb-16">
-      {/* Visual Hero Section */}
-      <section className="bg-gradient-to-b from-neutral-100 to-neutral-50 py-20 px-4 text-center">
-        <div className="max-w-3xl mx-auto">
-          <span className="text-xs font-semibold tracking-widest text-blue-600 uppercase bg-blue-50 px-3 py-1 rounded-full">
-            Welcome to Vaandu Books
-          </span>
-          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-neutral-900">
-            Beautiful stories, painted with wonder.
-          </h1>
-          <p className="mt-4 text-base sm:text-lg text-neutral-600 max-w-xl mx-auto">
-            Discover our curated collection of premium art volumes and interactive children's stories made to last generations.
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Link href="/shop" className="bg-blue-600 text-white font-medium px-6 py-3 rounded-xl hover:bg-blue-700 transition shadow-sm">
-              Explore Collection
-            </Link>
-          </div>
-        </div>
-      </section>
+    <div className="flex flex-col">
+      <div>
+        <Image src="/assets/tree-with-childrens.jpg" alt="Tree" width={600} height={200} className="m-auto" />
+      </div>
+      <div className="flex items-center justify-center gap-2 sm:gap-4 px-2">
+        <Image
+          src="/assets/bus-left.jpg"
+          alt="Bus Left"
+          width={120}
+          height={200}
+          className="w-14 sm:w-20 md:w-24 lg:w-28 h-auto"
+        />
 
-      {/* Featured Books Image Grid */}
-      <section className="max-w-7xl mx-auto px-4 mt-16">
-        <div className="flex justify-between items-end border-b border-neutral-200 pb-4 mb-8">
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-neutral-900">Featured Releases</h2>
-            <p className="text-sm text-neutral-500">Handpicked masterpieces for your bookshelf</p>
-          </div>
-          <Link href="/shop" className="text-sm font-semibold text-blue-600 hover:underline">
-            View all &rarr;
-          </Link>
+        <div className="w-[180px] sm:w-[260px]">
+          <HomeCarousel />
         </div>
 
-        {/* Responsive Flex/Grid Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {SAMPLE_BOOKS.map((book) => (
-            <div key={book.id} className="group relative flex flex-col bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:shadow-md transition">
-              {/* Product Aspect Image Window */}
-              <div className="aspect-[3/4] bg-neutral-100 relative overflow-hidden">
-                <img 
-                  src={book.image} 
-                  alt={book.title}
-                  className="object-cover w-full h-full group-hover:scale-105 transition duration-300"
-                  loading="lazy"
-                />
-              </div>
-              
-              {/* Meta details text card block */}
-              <div className="p-5 flex flex-col flex-grow">
-                <span className="text-xs text-neutral-400 font-medium tracking-wide uppercase">
-                  {book.category}
-                </span>
-                <h3 className="mt-1 font-bold text-neutral-900 group-hover:text-blue-600 transition text-base line-clamp-1">
-                  {book.title}
-                </h3>
-                <div className="mt-4 flex items-center justify-between pt-2 border-t border-neutral-100">
-                  <span className="font-semibold text-neutral-800">{book.price}</span>
-                  <Link 
-                    href={`/product/${book.id}`}
-                    className="text-xs font-semibold text-neutral-900 bg-neutral-100 px-3 py-2 rounded-lg hover:bg-neutral-950 hover:text-white transition"
-                  >
-                    View details
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+        <Image
+          src="/assets/bus-right.jpg"
+          alt="Bus Right"
+          width={120}
+          height={200}
+          className="w-14 sm:w-20 md:w-24 lg:w-28 h-auto"
+        />
+      </div>
     </div>
   );
 }
