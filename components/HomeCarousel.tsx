@@ -31,6 +31,14 @@ export default function HomeCarousel({ id }: HomeCarouselProps) {
             "/assets/screen-3.jpg",
             "/assets/screen-4.jpg",
         ]
+    } else if (id === "gifts") {
+        slides = [
+            "/assets/user-blue.jpg",
+            "/assets/monkey.jpg",
+            "/assets/shirt.jpg",
+            "/assets/girl.jpg",
+            "/assets/red-book.jpg",
+        ]
     }
     return (
         <Swiper className="w-full" modules={[Autoplay, Pagination]} loop={true} autoplay={{ delay: 3000, disableOnInteraction: false }} pagination={{ clickable: true, el: `.swiper-pagination-${id}` }}>
