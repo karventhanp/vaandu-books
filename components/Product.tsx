@@ -11,7 +11,7 @@ const Product = ({ image, title }: ProductProps) => {
             <div className="p-2">
                 <Image src={`/assets/${image}`} width={100} height={100} alt="product" className="w-16 md:w-40" />
             </div>
-            <div className="border-t-2 text-sm md:p-1 md:text-lg text-center font-medium">
+            <div className="border-t-2 text-sm md:p-1 md:text-lg text-center font-medium bg-green-yellow rounded-b-lg">
                 {title}
             </div>
         </div>
