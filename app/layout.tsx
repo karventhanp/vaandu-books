@@ -39,7 +39,7 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="bg-white border-t border-neutral-200 py-8 text-center text-xs text-neutral-500">
+        <footer className="bg-gold border-t border-neutral-200 py-8 text-center text-xs text-neutral-500">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>&copy; {new Date().getFullYear()} Vaandu Books. All rights reserved.</p>
             <div className="flex gap-4">
