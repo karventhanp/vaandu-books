@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-shantell), sans-serif;
+
   --color-green-yellow: #C8EA1A;
   --color-tomato: #FF5D5D;
   --color-skyblue: #36D7FF;
   --color-gold: #F5DD21;
   --color-olive: #876B29;
-  --color-black: #312FOE;
+  --color-black: #312F0E;
   --color-dark-slatgray: #0D3A34;
 }
