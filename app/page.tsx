@@ -1,8 +1,12 @@
 import BookList from "@/components/BookList";
+import { CartProvider } from "@/components/CartContext";
 import ScreenSlider from "@/components/ScreenSlider";
+import ContactSection from "@/components/ContactSection";
 import Image from "next/image";
 import theaterScreen from "../public/assets/theater-screen.jpg";
-import ContactSection from "@/components/ContactSection";
+import ProductCarousel from "@/components/ProductCarousel";
+import OrderBar from "@/components/OrderBar";
+import ShowcaseSlider from "@/components/ShowcaseSlider";
 
 export default function HomePage() {
   const books = [
@@ -12,11 +16,16 @@ export default function HomePage() {
     { title: "Coming Soon...", image: "red-book.jpg", price: 0, pages: 0, language: "Tamil & English", age: "6+", comingSoon: true },
   ];
 
-  const gifts = [
-    { image: "monkey.jpg", alt: "Badge" },
-    { image: "red-book.jpg", alt: "Notebook" },
-    { image: "shirt.jpg", alt: "T-shirt" },
-    { image: "girl.jpg", alt: "Figurine" },
+  // Products — add as many as you like, the carousel scrolls
+  const products = [
+    { name: "2027 Rose Calendar", image: "rose-calendar.png", price: 250 },
+    { name: "2027 Yellow Calendar", image: "yellow-calendar.png", price: 250 },
+    { name: "2027 Blue Calendar", image: "blue-calendar.png", price: 250 },
+    { name: "2027 Green Calendar", image: "green-calendar.png", price: 250 },
+    { name: "Rose Badge", image: "rose-badge-1.jpg", price: 30 },
+    { name: "Yellow Badge", image: "yellow-badge.jpg", price: 30 },
+    { name: "Blue Badge", image: "blue-badge.jpg", price: 30 },
+    { name: "Green Badge", image: "green-badge.jpg", price: 30 },
   ];
 
   return (
@@ -44,10 +53,9 @@ export default function HomePage() {
         </p>
       </div>
 
-
       {/* Theater screen + slider */}
       <div className="relative w-full mx-auto sm:max-w-225 mt-10">
-        <label className="absolute sm:left-118.75 left-45 -translate-x-1/2 -top-4 sm:-translate-x-1/2 text-2xl sm:text-6xl font-semibold text-[#7dd1d0]">VAANDUBOOKS</label>
+        <label className="absolute sm:left-118.75 left-45 whitespace-nowrap -translate-x-1/2 -top-4 sm:-translate-x-1/2 text-2xl sm:text-6xl font-semibold text-[#75bdb4]">VAANDU BOOKS</label>
         <Image
           src={theaterScreen}
           sizes="(max-width: 640px) 100vw, 900px"
@@ -59,46 +67,37 @@ export default function HomePage() {
         <div className="absolute top-[11%] left-[19%] w-[61%] h-[68%]">
           <ScreenSlider />
         </div>
-
       </div>
 
-      {/* Books */}
-      <section className="w-full max-w-6xl mx-auto px-4 my-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-dark-slatgray text-center mb-6">Our Books</h2>
-        <BookList books={books} />
-      </section>
+      {/* Books + Products share one cart */}
+      <CartProvider>
+        {/* Books */}
+        <section className="w-full max-w-6xl mx-auto px-4 my-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-dark-slatgray text-center mb-6">Our Books</h2>
+          <BookList books={books} />
+        </section>
 
-      {/* Gift Offers */}
-      <section className="w-full max-w-6xl mx-auto px-4 my-10">
-        <div className="flex flex-col md:flex-row rounded-2xl border-2 border-black overflow-hidden bg-white">
-          {/* Label */}
-          <div className="bg-skyblue text-dark-slatgray flex items-center justify-center px-6 py-3 md:py-0 border-b-2 md:border-b-0 md:border-r-2 border-black">
-            <h2 className="text-lg md:text-xl font-semibold text-center leading-snug">
-              Gift
-              <br className="hidden md:block" /> Offers
-            </h2>
-          </div>
-
-          {/* Gift circles */}
-          <div className="flex-1 grid grid-cols-2 md:grid-cols-4 place-items-center gap-4 p-4">
-            {gifts.map((gift) => (
-              <div
-                key={gift.image}
-                className="w-28 h-28 md:w-40 md:h-40 rounded-full border-2 border-gray-300 overflow-hidden bg-white hover:scale-105 transition-transform"
-              >
-                <Image
-                  src={`/assets/${gift.image}`}
-                  alt={gift.alt}
-                  width={200}
-                  height={200}
-                  sizes="160px"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
+        <div className="mt-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-dark-slatgray text-center mb-2">Fun Goodies</h2>
+          <p className="text-center text-sm md:text-base text-dark-slatgray mb-6">
+            Badges, notebooks, T-shirts and more for little readers! 🎁
+          </p>
         </div>
-      </section>
+
+        {/* Showcase slider */}
+        <section className="w-full max-w-6xl mx-auto px-4 my-6">
+          <ShowcaseSlider />
+        </section>
+
+        {/* Products */}
+        <section id="products" className="w-full max-w-6xl mx-auto px-4 my-10 scroll-mt-20">
+
+          <ProductCarousel products={products} />
+        </section>
+
+        {/* One WhatsApp order bar for everything */}
+        <OrderBar />
+      </CartProvider>
 
       {/* About */}
       <section
