@@ -53,7 +53,6 @@ export default function ContactSection() {
                         >
                             <Icon className={`text-4xl mb-2 ${color}`} />
                             <p className="font-semibold">{label}</p>
-                            <p className="text-sm break-all">{value}</p>
                         </a>
                     );
                 })}

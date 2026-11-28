@@ -6,10 +6,10 @@ import ContactSection from "@/components/ContactSection";
 
 export default function HomePage() {
   const books = [
-    { title: "Kutti Sevvai", image: "frontcover.jpg", price: 199 },
-    { title: "Book Two", image: "monkey.jpg", price: 149 },
-    { title: "Book Three", image: "red-book.jpg", price: 179 },
-    { title: "Book Four", image: "girl.jpg", price: 159 },
+    { title: "Kuttich Selvi", image: "kuttichselvi.jpg", price: 200, pages: 40, language: "Tamil & English", age: "6+" },
+    { title: "Kuttich Selviyin Kanavu", image: "kuttichselvi-kanavu.jpg", price: 200, pages: 40, language: "Tamil & English", age: "6+" },
+    { title: "Muthu mama katruthantha ragasiyam", image: "muthumama.jpg", price: 250, pages: 52, language: "Tamil & English", age: "6+" },
+    { title: "Coming Soon...", image: "red-book.jpg", price: 0, pages: 0, language: "Tamil & English", age: "6+", comingSoon: true },
   ];
 
   const gifts = [
@@ -44,8 +44,10 @@ export default function HomePage() {
         </p>
       </div>
 
+
       {/* Theater screen + slider */}
-      <div className="relative w-full mx-auto sm:max-w-[900px]">
+      <div className="relative w-full mx-auto sm:max-w-225 mt-10">
+        <label className="absolute sm:left-118.75 left-45 -translate-x-1/2 -top-4 sm:-translate-x-1/2 text-2xl sm:text-6xl font-semibold text-[#7dd1d0]">VAANDUBOOKS</label>
         <Image
           src={theaterScreen}
           sizes="(max-width: 640px) 100vw, 900px"
@@ -57,6 +59,7 @@ export default function HomePage() {
         <div className="absolute top-[11%] left-[19%] w-[61%] h-[68%]">
           <ScreenSlider />
         </div>
+
       </div>
 
       {/* Books */}

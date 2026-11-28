@@ -5,7 +5,15 @@ import BookCard from "./BookCard";
 
 const WHATSAPP_NUMBER = "917604883551";
 
-type Book = { title: string; image: string; price: number };
+type Book = {
+  title: string;
+  image: string;
+  price: number;
+  pages: number;
+  language: string;
+  age: string;
+  comingSoon?: boolean;
+};
 
 export default function BookList({ books }: { books: Book[] }) {
   const [cart, setCart] = useState<Record<string, number>>({});
@@ -19,7 +27,7 @@ export default function BookList({ books }: { books: Book[] }) {
     });
   };
 
-  const items = books.filter((b) => cart[b.title]);
+  const items = books.filter((b) => !b.comingSoon && cart[b.title]);
   const totalQty = items.reduce((sum, b) => sum + cart[b.title], 0);
   const totalPrice = items.reduce((sum, b) => sum + b.price * cart[b.title], 0);
 
@@ -35,7 +43,7 @@ export default function BookList({ books }: { books: Book[] }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-fr gap-4 md:gap-6">
         {books.map((book) => (
           <BookCard
             key={book.title}
