@@ -55,7 +55,8 @@ export default function HomePage() {
 
       {/* Theater screen + slider */}
       <div className="relative w-full mx-auto sm:max-w-225 mt-10">
-        <label className="absolute sm:left-118.75 left-45 whitespace-nowrap -translate-x-1/2 -top-4 sm:-translate-x-1/2 text-2xl sm:text-6xl font-semibold text-[#75bdb4]">VAANDU BOOKS</label>
+        {/* <label className="absolute sm:left-118.75 left-45 whitespace-nowrap -translate-x-1/2 -top-4 sm:-translate-x-1/2 text-2xl sm:text-6xl font-semibold text-[#75bdb4]">VAANDU BOOKS</label> */}
+        <label className="absolute whitespace-nowrap -translate-x-1/2 -top-4 left-1/2 text-2xl sm:text-6xl font-semibold text-[#75bdb4]">VAANDU BOOKS</label>
         <Image
           src={theaterScreen}
           sizes="(max-width: 640px) 100vw, 900px"
